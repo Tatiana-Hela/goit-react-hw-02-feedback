@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from '../App/App.module.css';
+import css from '../FeedbackOptions/FeedbackOptions.module.css';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
