@@ -1,5 +1,8 @@
 import { Component } from 'react';
-import css from './App.module.css';
+import css from '../App/App.module.css';
+
+import Statistics from 'components/Statistics/Statistics';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 
 class App extends Component {
   state = {
@@ -8,14 +11,13 @@ class App extends Component {
     bad: 0,
   };
 
-  leaveFeedback(name) {
+  leaveFeedback = option => {
     this.setState(prevState => {
-      console.log(prevState);
       return {
-        [name]: prevState[name] + 1,
+        [option]: prevState[option] + 1,
       };
     });
-  }
+  };
 
   countTotalFeedback() {
     const { good, neutral, bad } = this.state;
@@ -36,38 +38,18 @@ class App extends Component {
     return (
       <div>
         <h2 className={css.title}>Please leave feedback</h2>
-        <div className={css.feedbackBlok}>
-          <button
-            onClick={() => this.leaveFeedback('good')}
-            className={css.feedbackItem}
-          >
-            Good
-          </button>
-          <button
-            onClick={() => this.leaveFeedback('neutral')}
-            className={css.feedbackItem}
-          >
-            Neutral
-          </button>
-          <button
-            onClick={() => this.leaveFeedback('bad')}
-            className={css.feedbackItem}
-          >
-            Bad
-          </button>
-        </div>
-        <div>
-          <h2 className={css.title}>Statistics</h2>
-          <ul className={css.statisticsList}>
-            <li className={css.statisticsItem}>Good: {good}</li>
-            <li className={css.statisticsItem}>Neutral: {neutral}</li>
-            <li className={css.statisticsItem}>Bad: {bad}</li>
-            <li className={css.statisticsItem}>Total: {total}</li>
-            <li className={css.statisticsItem}>
-              Positive feedback: {positivePercentage}%
-            </li>
-          </ul>
-        </div>
+        <FeedbackOptions
+          options={Object.keys(this.state)}
+          onLeaveFeedback={this.leaveFeedback}
+        />
+        <h2 className={css.title}>Statistics</h2>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={total}
+          positivePercentage={positivePercentage}
+        />
       </div>
     );
   }
