@@ -1,0 +1,28 @@
+.title {
+  font-size: 24px;
+  margin-left: 10px;
+}
+.feedbackBlok {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+.feedbackItem {
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.statisticsList {
+  list-style: none;
+}
+.statisticsItem {
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 500;
+}
